@@ -36,7 +36,6 @@ const MessageSection = () => {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        markers: true,
       },
     });
     const revealtl = gsap.timeline({
