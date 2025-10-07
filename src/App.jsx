@@ -1,5 +1,5 @@
 /*type rafce */
-/* min 1:17:30*/
+/* min 1:23:20*/
 
 import React from "react";
 import NavBar from "./components/NavBar";
