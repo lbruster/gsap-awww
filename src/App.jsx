@@ -17,7 +17,7 @@ const App = () => {
       <HeroSection />
       <MessageSection />
       <FlavorsSection />
-      <div className="h-dvh border border-red-500"></div>
+      {/*       <div className="h-dvh border border-red-500"></div> */}
     </main>
   );
 };
