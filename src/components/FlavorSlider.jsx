@@ -6,6 +6,26 @@ import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const FlavorSlider = () => {
+  const sliderRef = useRef();
+
+  useGSAP(() => {
+    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".flavor-section",
+        start: "2% top",
+        end: `+=${scrollAmount + 1500}px`,
+        scrub: true,
+        pin: true,
+        markers: true,
+      },
+    });
+    tl.to(".flavor-section", {
+      x: `-${scrollAmount + 1500}px`,
+      ease: "power1.inOut",
+    });
+  });
   return (
     <div className="slider-wrapper">
       <div className="flavors">
