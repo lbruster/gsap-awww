@@ -9,7 +9,14 @@ const FlavorSlider = () => {
   const sliderRef = useRef();
 
   useGSAP(() => {
-    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+    const scrollAmount = /*sliderRef.current.scrollWidth - */ window.innerWidth;
+
+    const myRef = useRef(null);
+    useEffect(() => {
+      if (myRef.current) {
+        console.log(myRef.current.scrollWidth);
+      }
+    }, []);
 
     const tl = gsap.timeline({
       scrollTrigger: {
