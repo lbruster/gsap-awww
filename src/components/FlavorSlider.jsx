@@ -8,30 +8,65 @@ import { useMediaQuery } from "react-responsive";
 const FlavorSlider = () => {
   const sliderRef = useRef();
 
-  useGSAP(() => {
-    const scrollAmount = /*sliderRef.current.scrollWidth - */ window.innerWidth;
+  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
-    const myRef = useRef(null);
+  useGSAP(() => {
+    const scrollAmount =
+      /*sliderRef.current.scrollWidth - */ window.innerWidth + 3300;
+
+    /*  const myRef = useRef(null);
     useEffect(() => {
       if (myRef.current) {
         console.log(myRef.current.scrollWidth);
       }
-    }, []);
+    }, []); */
 
-    const tl = gsap.timeline({
+    if (!isTablet) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".flavor-section",
+          start: "2% top",
+          end: `+=${scrollAmount + 1500}px`,
+          scrub: true,
+          pin: true,
+        },
+      });
+      tl.to(".flavor-section", {
+        x: `-${scrollAmount + 1500}px`,
+        ease: "power1.inOut",
+      });
+    }
+
+    const titleT1l = gsap.timeline({
       scrollTrigger: {
         trigger: ".flavor-section",
-        start: "2% top",
-        end: `+=${scrollAmount + 1500}px`,
+        start: "top top",
+        end: "bottom 80%",
         scrub: true,
-        pin: true,
-        markers: true,
       },
     });
-    tl.to(".flavor-section", {
-      x: `-${scrollAmount + 1500}px`,
-      ease: "power1.inOut",
-    });
+
+    titleT1l
+      .to(".first-text-split", {
+        xPercent: -30,
+        ease: "power1.inOut",
+      })
+      .to(
+        ".flavor-text-scroll",
+        {
+          xPercent: -22,
+          ease: "power1.inOut",
+        },
+        "<"
+      )
+      .to(
+        ".second-text-split",
+        {
+          xPercent: -10,
+          ease: "power1.inOut",
+        },
+        "<"
+      );
   });
   return (
     <div className="slider-wrapper">
