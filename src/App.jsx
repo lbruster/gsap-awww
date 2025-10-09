@@ -1,14 +1,15 @@
 /*type rafce */
-/* min 1:40:20*/
+/* min 2:04:20*/
 
 import React from "react";
-import NavBar from "./components/NavBar";
-import HeroSection from "./sections/HeroSection";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import NavBar from "./components/NavBar";
+import HeroSection from "./sections/HeroSection";
 import MessageSection from "./sections/MessageSection";
 import FlavorsSection from "./sections/FlavorsSection";
-import { useGSAP } from "@gsap/react";
+import NutritionSection from "./sections/NutritionSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           <HeroSection />
           <MessageSection />
           <FlavorsSection />
+          <NutritionSection />
           <div className="h-dvh border border-red-500"></div>
         </div>
       </div>
