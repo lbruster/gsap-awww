@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { nutrientLists } from "../constant";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useGSAP } from "@gsap/react";
+import gsap, { SplitText } from "gsap/all";
 
 const NutritionSection = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
@@ -15,6 +17,50 @@ const NutritionSection = () => {
       setLists(nutrientLists);
     }
   }, [isMobile]);
+
+  useGSAP(() => {
+    const titleSplit = SplitText.create(".nutrition-title", {
+      type: "chars",
+    });
+    const paragraphSplit = SplitText.create(".nutrition-section p", {
+      type: "words, lines",
+      linesClass: "paragraph-line",
+    });
+
+    const contentTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".nutrition-section",
+        start: "top center",
+      },
+    });
+    contentTl
+      .from(titleSplit.chars, {
+        yPercent: 100,
+        stagger: 0.02,
+        ease: "power2.out",
+      })
+      .from(paragraphSplit.words, {
+        yPercent: 300,
+        rotate: 3,
+        ease: "power1.inOut",
+        duration: 1,
+        stagger: 0.01,
+      });
+
+    const titleTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".nutrition-section",
+        start: "top 80%",
+      },
+    });
+
+    titleTl.to(".nutrition-text-scroll", {
+      duration: 1,
+      opacity: 1,
+      clipPath: "polygon(100% 0, 0 0, 0 100%, 100% 100%)",
+      ease: "power1.inOut",
+    });
+  });
   return (
     <section className="nutrition-section">
       <img
@@ -28,9 +74,14 @@ const NutritionSection = () => {
         <div className="relative inline-block md:translate-y-20">
           <div className="general-title relative flex flex-col justify-center item-center gap-24">
             <div className="overflow-hidden place-self-start">
-              <h1>It still does</h1>
+              <h1 className="nutrition-title">It still does</h1>
             </div>
-            <div style={{}} className="nutrition-text-scroll place-self-start">
+            <div
+              style={{
+                clipPath: "clip-path: polygon(0 0, 0 0, 0 100%, 0 100%)",
+              }}
+              className="nutrition-text-scroll place-self-start"
+            >
               <div className="bg-yellow-brown pb-5 md:pt-0 pt-3 md:px-5 px-3 inline-block">
                 <h2 className="text-milk-yellow">Body Good</h2>
               </div>
