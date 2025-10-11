@@ -11,15 +11,8 @@ const FlavorSlider = () => {
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
   useGSAP(() => {
-    const scrollAmount =
-      /*sliderRef.current.scrollWidth - */ window.innerWidth + 3300;
-
-    /*  const myRef = useRef(null);
-    useEffect(() => {
-      if (myRef.current) {
-        console.log(myRef.current.scrollWidth);
-      }
-    }, []); */
+    const scrollAmount = sliderRef.current.scrollWidth - window.innerWidth;
+    console.log(scrollAmount);
 
     if (!isTablet) {
       const tl = gsap.timeline({
@@ -69,7 +62,7 @@ const FlavorSlider = () => {
       );
   });
   return (
-    <div className="slider-wrapper">
+    <div className="slider-wrapper" ref={sliderRef}>
       <div className="flavors">
         {flavorlists.map((flavor) => (
           <div

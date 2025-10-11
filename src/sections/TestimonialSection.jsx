@@ -5,6 +5,7 @@ import gsap from "gsap";
 
 const TestimonialSection = () => {
   const vdRef = useRef([]);
+  console.log(cards);
 
   useGSAP(() => {
     gsap.set(".testimonials-section", {
@@ -74,16 +75,24 @@ const TestimonialSection = () => {
       </div>
 
       <div className="pin-box">
+        {(!cards.lenght || cards.length === 0) && <h1>No hay cards</h1>}
+        {/* usar useState / useEffect para manejar el array */}
         {cards.map((card, index) => {
           <div
             key={index}
-            className={`vd-card ${card.translation} ${card.rotation}`}
+            /* className={`vd-card ${card.translation} ${card.rotation}`}
             onMouseEnter={() => handlePlay(index)}
-            onMouseLeave={() => handlePause(index)}
+            onMouseLeave={() => handlePause(index)} */
           >
+            <h1>ejecutando</h1>
+            {/* src: "/videos/f1.mp4",
+    rotation: "rotate-z-[-10deg]",
+    name: "Madison",
+    img: "/images/p1.png",
+    translation: "translate-y-[-5%]", */}
             <video
-              ref={(el) => (vdRef.current[index] = el)}
-              src={card.src}
+              /*  ref={(el) => (vdRef.current[index] = el)} */
+              src="/videos/f1.mp4" /* {card.src} */
               playsInline
               muted
               loop
