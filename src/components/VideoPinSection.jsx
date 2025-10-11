@@ -36,7 +36,11 @@ const VideoPinSection = () => {
         }}
         className="size-full video-box"
       >
-        <video src="/videos/pin-video.mp4" playsInline muted loop autoPlay />
+        <video src="/videos/pin-video.mp4" playsInline muted loop autoPlay type="video/mp4" />
+        {/* <video  loop autoPlay>
+          <source src= { covervid } type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+          <source src={ covervidtwo } type="video/ogg" />Your browser does not support the video tag. I suggest you upgrade your browser.
+      </video> */}
       </div>
       <div className="abs-center md:scale-100 scale-200">
         <img src="/images/circle-text.svg" alt="" className="spin-circle" />

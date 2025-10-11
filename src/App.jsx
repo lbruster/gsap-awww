@@ -1,5 +1,5 @@
 /*type rafce */
-/* min 2:16:20*/
+/* min 2:55:20*/
 
 import React from "react";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
@@ -11,6 +11,8 @@ import MessageSection from "./sections/MessageSection";
 import FlavorsSection from "./sections/FlavorsSection";
 import NutritionSection from "./sections/NutritionSection";
 import BenefitSection from "./sections/BenefitSection";
+import TestimonialSection from "./sections/TestimonialSection";
+import FooterSection from "./sections/FooterSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 const App = () => {
@@ -29,8 +31,11 @@ const App = () => {
           <MessageSection />
           <FlavorsSection />
           <NutritionSection />
-          <BenefitSection />
-          <div className="h-dvh border border-red-500"></div>
+          <div className="">
+            <BenefitSection />
+            <TestimonialSection />
+          </div>
+          <FooterSection />
         </div>
       </div>
     </main>
