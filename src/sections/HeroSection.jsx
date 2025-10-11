@@ -104,7 +104,7 @@ const HeroSection = () => {
           </div>
 
           <h2>
-            Live life to the fullest  with SPYLT: Shatter boredom and embrace
+            Live life to the fullest with SPYLT: Shatter boredom and embrace
             your inner kid with every deliciously smooth chug.
           </h2>
 
