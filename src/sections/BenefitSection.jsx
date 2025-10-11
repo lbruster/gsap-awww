@@ -1,6 +1,5 @@
-import React, { use } from "react";
 import ClipPathTitle from "../components/ClipPathTitle";
-import gsap from "gsap/all";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import VideoPinSection from "../components/VideoPinSection";
 
@@ -45,7 +44,6 @@ const BenefitSection = () => {
 
   return (
     <section className="benefit-section">
-      <h2>Benefit Section</h2>
       <div className="container mx-auto pt-20">
         <div className="col-center">
           <p className="">
@@ -53,7 +51,7 @@ const BenefitSection = () => {
             Explore the Key Benefits of Choosing SPYLT
           </p>
 
-          <div className="nt-20 col-center">
+          <div className="mt-20 col-center">
             <ClipPathTitle
               title={"Shelf stable"}
               color={"#faeade"}
@@ -87,11 +85,11 @@ const BenefitSection = () => {
           <div className="md:mt-0 mt-10">
             <p>And much more ...</p>
           </div>
-
-          <div className="relative overlay-box">
-            <VideoPinSection />
-          </div>
         </div>
+      </div>
+
+      <div className="relative overlay-box">
+        <VideoPinSection />
       </div>
     </section>
   );
