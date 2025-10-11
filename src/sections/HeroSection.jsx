@@ -16,9 +16,11 @@ const HeroSection = () => {
     const titleSplit = SplitText.create(".hero-title", {
       chars: "chars",
     });
+
     const tl = gsap.timeline({
       delay: 1,
     });
+
     tl.to(".hero-content", {
       opacity: 1,
       y: 0,
@@ -40,7 +42,7 @@ const HeroSection = () => {
           stagger: 0.02,
           ease: "power2.out",
         },
-        "-=0.05"
+        "-=0.5"
       );
 
     const heroTl = gsap.timeline({
@@ -48,7 +50,7 @@ const HeroSection = () => {
         trigger: ".hero-container",
         start: "1% top",
         end: "bottom top",
-        scrub: "true",
+        scrub: true,
       },
     });
     heroTl.to(".hero-container", {
