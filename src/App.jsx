@@ -1,5 +1,5 @@
 /*type rafce */
-/* min 2:55:20*/
+/* min 3:20:20*/
 
 import React from "react";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
