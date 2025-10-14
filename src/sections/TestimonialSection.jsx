@@ -73,32 +73,36 @@ const TestimonialSection = () => {
         <h1 className="text-black third-title">Talking</h1>
       </div>
 
-      {console.log(cards)}
       <div className="pin-box">
-        {(!cards.lenght || cards.length === 0) && <h1>No hay cards</h1>}
-        {/* usar useState / useEffect para manejar el array */}
+        {/*  {cards.map((card, index) => {
+          {
+            return <p key={index}>{card.src}</p>;
+          }
+        })} */}
         {cards.map((card, index) => {
-          <div
-            key={index}
-            className={`vd-card ${card.translation} ${card.rotation}`}
-            onMouseEnter={() => handlePlay(index)}
-            onMouseLeave={() => handlePause(index)}
-          >
-            <h1>ejecutando</h1>
-            {/* src: "/videos/f1.mp4",
+          return (
+            <div
+              key={index}
+              className={`vd-card ${card.translation} ${card.rotation}`}
+              onMouseEnter={() => handlePlay(index)}
+              onMouseLeave={() => handlePause(index)}
+            >
+              {/*  <h1>ejecutando</h1> */}
+              {/* src: "/videos/f1.mp4",
     rotation: "rotate-z-[-10deg]",
     name: "Madison",
     img: "/images/p1.png",
     translation: "translate-y-[-5%]", */}
-            <video
-              /*  ref={(el) => (vdRef.current[index] = el)} */
-              src="/videos/f1.mp4" /* {card.src} */
-              playsInline
-              muted
-              loop
-              className="size-full object-cover"
-            />
-          </div>;
+              <video
+                ref={(el) => (vdRef.current[index] = el)}
+                src={card.src} /*  */
+                playsInline
+                muted
+                loop
+                className="size-full object-cover"
+              />
+            </div>
+          );
         })}
       </div>
     </section>
