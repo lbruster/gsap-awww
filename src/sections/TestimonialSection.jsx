@@ -4,20 +4,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const TestimonialSection = () => {
-  // 1. useState: Manages the array of cards (the list data)
-  const [cards, setCards] = useState([]);
-  // 3. useEffect: Used here to load the initial card data once when the component mounts
-  useEffect(() => {
-    // In a real app, you would fetch data here (e.g., axios.get('/api/cards'))
-    // For now, we'll use the static data:
-    setCards(INITIAL_CARDS);
-
-    // Cleanup function (optional for this simple case, but good practice)
-    return () => {
-      // Any cleanup needed when the component unmounts
-    };
-  }, []); // The empty array ensures this runs only ONCE after the initial render
-
   const vdRef = useRef([]);
 
   useGSAP(() => {
@@ -79,8 +65,6 @@ const TestimonialSection = () => {
     video.pause();
   };
 
-  console.log(cards);
-
   return (
     <section className="testimonials-section">
       <div className="absolute size-full flex flex-col items-center py-[5vw]">
@@ -89,6 +73,7 @@ const TestimonialSection = () => {
         <h1 className="text-black third-title">Talking</h1>
       </div>
 
+      {console.log(cards)}
       <div className="pin-box">
         {(!cards.lenght || cards.length === 0) && <h1>No hay cards</h1>}
         {/* usar useState / useEffect para manejar el array */}
@@ -106,8 +91,8 @@ const TestimonialSection = () => {
     img: "/images/p1.png",
     translation: "translate-y-[-5%]", */}
             <video
-              ref={(el) => (vdRef.current[index] = el)}
-              src={card.src} /* {card.src} */ /*"/videos/f1.mp4"*/
+              /*  ref={(el) => (vdRef.current[index] = el)} */
+              src="/videos/f1.mp4" /* {card.src} */
               playsInline
               muted
               loop
@@ -115,7 +100,6 @@ const TestimonialSection = () => {
             />
           </div>;
         })}
-        {cards.length === 0 && <p>Loading videos...</p>}
       </div>
     </section>
   );
