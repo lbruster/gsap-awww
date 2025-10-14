@@ -4,8 +4,21 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const TestimonialSection = () => {
+  // 1. useState: Manages the array of cards (the list data)
+  const [cards, setCards] = useState([]);
+  // 3. useEffect: Used here to load the initial card data once when the component mounts
+  useEffect(() => {
+    // In a real app, you would fetch data here (e.g., axios.get('/api/cards'))
+    // For now, we'll use the static data:
+    setCards(INITIAL_CARDS);
+
+    // Cleanup function (optional for this simple case, but good practice)
+    return () => {
+      // Any cleanup needed when the component unmounts
+    };
+  }, []); // The empty array ensures this runs only ONCE after the initial render
+
   const vdRef = useRef([]);
-  console.log(cards);
 
   useGSAP(() => {
     gsap.set(".testimonials-section", {
@@ -66,6 +79,8 @@ const TestimonialSection = () => {
     video.pause();
   };
 
+  console.log(cards);
+
   return (
     <section className="testimonials-section">
       <div className="absolute size-full flex flex-col items-center py-[5vw]">
@@ -80,9 +95,9 @@ const TestimonialSection = () => {
         {cards.map((card, index) => {
           <div
             key={index}
-            /* className={`vd-card ${card.translation} ${card.rotation}`}
+            className={`vd-card ${card.translation} ${card.rotation}`}
             onMouseEnter={() => handlePlay(index)}
-            onMouseLeave={() => handlePause(index)} */
+            onMouseLeave={() => handlePause(index)}
           >
             <h1>ejecutando</h1>
             {/* src: "/videos/f1.mp4",
@@ -91,8 +106,8 @@ const TestimonialSection = () => {
     img: "/images/p1.png",
     translation: "translate-y-[-5%]", */}
             <video
-              /*  ref={(el) => (vdRef.current[index] = el)} */
-              src="/videos/f1.mp4" /* {card.src} */
+              ref={(el) => (vdRef.current[index] = el)}
+              src={card.src} /* {card.src} */ /*"/videos/f1.mp4"*/
               playsInline
               muted
               loop
@@ -100,6 +115,7 @@ const TestimonialSection = () => {
             />
           </div>;
         })}
+        {cards.length === 0 && <p>Loading videos...</p>}
       </div>
     </section>
   );
