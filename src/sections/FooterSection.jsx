@@ -1,5 +1,5 @@
 import { useMediaQuery } from "react-responsive";
-
+/*footer ismissing relative on input and z-10*/
 const FooterSection = () => {
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",

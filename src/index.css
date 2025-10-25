@@ -238,6 +238,9 @@ body::-webkit-scrollbar {
       .vd-card {
         @apply md:w-96 w-80 flex-none md:rounded-[2vw] rounded-3xl -ms-44 overflow-hidden 2xl:relative absolute border-[.5vw] border-milk;
       }
+      .vd-priority {
+        z-index: 10;
+      }
     }
 
     h1 {

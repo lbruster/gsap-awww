@@ -5,6 +5,7 @@ import gsap from "gsap";
 
 const TestimonialSection = () => {
   const vdRef = useRef([]);
+  const vdWrapRef = useRef([]);
 
   useGSAP(() => {
     gsap.set(".testimonials-section", {
@@ -57,11 +58,19 @@ const TestimonialSection = () => {
 
   const handlePlay = (index) => {
     const video = vdRef.current[index];
+
+    const videochild = video.parentElement;
+    videochild.classList.add("vd-priority");
+
     video.play();
   };
 
   const handlePause = (index) => {
     const video = vdRef.current[index];
+
+    const videochild = video.parentElement;
+    videochild.classList.remove("vd-priority");
+
     video.pause();
   };
 
@@ -83,6 +92,7 @@ const TestimonialSection = () => {
           return (
             <div
               key={index}
+              /* ref={(elwa) => (videoWrapper.current[index] = elwa)} */
               className={`vd-card ${card.translation} ${card.rotation}`}
               onMouseEnter={() => handlePlay(index)}
               onMouseLeave={() => handlePause(index)}
